@@ -6,6 +6,8 @@ use App\Models\Job;
 
 
 Route::get('/', function () {
+//     $job = Job::all();
+//     dd($job[1]->income);
     return view('home');
 });
 
