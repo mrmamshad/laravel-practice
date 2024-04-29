@@ -11,74 +11,93 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
     <style>
         .nav-link {
-            @apply inline-block px-4 py-2 text-gray-800 hover:bg-red-800 transition-colors duration-300;
+            @apply inline-block px-4 py-2 text-gray-800 hover:bg-red-800 transition-colors duration-200;
         }
+
+        .navbar ul {
+            list-style-type: none;
+            background-color: #344955;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content:  space-evenly;
+        }
+
+        .navbar a {
+
+
+            text-decoration: none;
+            color: #8492a6;
+            padding: 3px ;
+            display: flex;
+            text-align: center;
+
+        }
+        .nav-link.active {
+            background-color: #2d3748;
+            border-radius: 20px;
+            transition: background-color 0.6s ease, transform 0.3s ease;
+
+
+            /* Add any other styles you want for the active state */
+        }
+        .navbar li a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+
+
     </style>
 
     <!-- Styles -->
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-800">
-{{--<nav>--}}
-{{--    <ul class="relative flex items-center gap-2 rounded-3xl bg-[#0000000a] px-2 py-1 dark:border dark:border-sub-color/50 dark:bg-sub-alt-color">--}}
-{{--        <div class="absolute left-0 h-7 rounded-3xl bg-white shadow-[0px_0px_5px_0px_#0000000a] dark:bg-sub-color/40" style="width: 63px; transform: translateX(9px) translateZ(0px);"></div>--}}
-{{--        <li class="text-stone-900 dark:text-text-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Home</li>--}}
-{{--        <li class="text-stone-900 dark:text-sub-color dark:hover:text-main-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">About</li>--}}
-{{--        <li class="text-stone-900 dark:text-sub-color dark:hover:text-main-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Projects</li>--}}
-{{--        <li class="text-stone-900 dark:text-sub-color dark:hover:text-main-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Media</li>--}}
-{{--    </ul>--}}
-{{--</nav>--}}
-{{--    <nav>--}}
-{{--        <ul class="relative flex items-center gap-2 rounded-3xl bg-[#0000000a] px-2 py-1 dark:border dark:border-sub-color/50 dark:bg-sub-alt-color">--}}
-{{--            <div class="absolute left-0 h-7 rounded-3xl bg-white shadow-[0px_0px_5px_0px_#0000000a] dark:bg-sub-color/40"--}}
-{{--                 data-projection-id="34" style="width: 63px; transform: translateX(9px) translateZ(0px);"></div>--}}
-{{--            <a href="/">--}}
-{{--                <li class="--}}
-{{--                    text-stone-900 dark:text-text-color--}}
-{{--                    z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out "  >Home--}}
-{{--                </li>--}}
-{{--            </a>--}}
-{{--          <a href="/about" >--}}
-{{--              <li class="--}}
-{{--                    text-stone-900 dark:text-sub-color dark:hover:text-main-color--}}
-{{--                    z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">About--}}
-{{--              </li>--}}
-{{--          </a>--}}
-{{--         <a href="/contact">--}}
-{{--             <li class="--}}
-{{--                    text-stone-900 dark:text-sub-color dark:hover:text-main-color--}}
-{{--                    z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Projects--}}
-{{--             </li>--}}
-{{--         </a>--}}
-{{--           <a href="/notes"  >--}}
-{{--               <li class="--}}
-{{--                    text-stone-900 dark:text-sub-color dark:hover:text-main-color--}}
-{{--                    z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Media--}}
-{{--               </li>--}}
-{{--           </a>--}}
-{{--        </ul>--}}
-{{--    </nav>--}}
-<nav>
-    <ul class="relative flex items-center gap-2 rounded-3xl bg-[#0000000a] px-2 py-1 dark:border dark:border-sub-color/50 dark:bg-sub-alt-color">
-        <div id="background" class="absolute left-0 h-7 rounded-3xl bg-white shadow-[0px_0px_5px_0px_#0000000a] dark:bg-sub-color/40 transition-transform" style="width: 63px; transform: translateX(4px) translateZ(0px);"></div>
-        <li class="nav-item text-stone-900 dark:text-text-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Home</li>
-        <li class="nav-item text-stone-900 dark:text-sub-color dark:hover:text-main-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">About</li>
-        <li class="nav-item text-stone-900 dark:text-sub-color dark:hover:text-main-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Projects</li>
-        <li class="nav-item text-stone-900 dark:text-sub-color dark:hover:text-main-color z-10 cursor-pointer px-3 py-1 text-sm transition-colors duration-300 ease-in-out ">Media</li>
+<nav class="navbar bg-[#344955]  mx-auto rounded-full max-w-80 mt-6 py-1   flex  items-center justify-center shadow-xl">
+    <ul class="" >
+
+        <li><a href="/" class="nav-link hover:text-green-500 transition duration-300 " >Home</a></li>
+        <li><a href="/about" class="nav-link  hover:text-green-500 transition duration-300 " >About</a></li>
+        <li><a href="/contact" class="nav-link hover:text-green-500 transition duration-300 " >Contact</a></li>
+        <li><a href="/add" class="nav-link hover:text-green-500 transition duration-300 " >Add</a></li>
     </ul>
 </nav>
 
 <script>
-    const navItems = document.querySelectorAll('.nav-item');
-    const background = document.getElementById('background');
+    document.addEventListener("DOMContentLoaded", function() {
+        const navLinks = document.querySelectorAll(".nav-link");
 
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const itemRect = item.getBoundingClientRect();
-            const backgroundRect = background.getBoundingClientRect();
-            const translateX = itemRect.left - backgroundRect.left;
+        // Function to remove active class from all links
+        function removeActiveClass() {
+            navLinks.forEach(function(link) {
+                link.classList.remove("active");
+            });
+        }
 
-            background.style.transform = `translateX(${translateX}px)`;
+        navLinks.forEach(function(navLink) {
+            navLink.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                // Remove active class from all links
+                removeActiveClass();
+
+                // Add active class to the clicked link
+                this.classList.add("active");
+
+                // Navigate to the href of the clicked link
+                window.location.href = this.getAttribute("href");
+            });
+
+            // Check if the current URL matches the href of any navigation link
+            if (window.location.pathname === navLink.getAttribute("href")) {
+                // Add active class to the link whose href matches the current URL
+                navLink.classList.add("active");
+            }
         });
     });
 </script>
