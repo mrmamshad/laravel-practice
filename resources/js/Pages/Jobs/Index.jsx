@@ -5,7 +5,7 @@ import TablePagination from '@mui/material/TablePagination';
 
 export default function Jobs({ jobs, auth }) {
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

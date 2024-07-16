@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 use Inertia\Inertia;
+use App\Http\Controllers\JobController;
+
 
 Route::get('/', function () {
     return Inertia::render('Home', [
@@ -14,20 +16,16 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
+Route::get('/jobs/create',[JobController::class, 'create'])->name('jobs.create');
+Route::post('/jobs/create', [JobController::class, 'store'])->name('jobs.store');
+Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
+Route::patch('/jobs/{id}',[JobController::class, 'update'])->name('jobs.update');
+Route::get('/jobs/{id}/edit',  [JobController::class, 'edit'])->name('jobs.edit');
+Route::delete('/jobs/{id}/', [JobController::class, 'destroy'])->name('jobs.destroy');
 
-Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->get();
+// Route::resource('jobs', JobController::class);
 
-    return Inertia::render('Jobs', [
-        'jobs' => $jobs
-    ]);
-})->name('jobs');
-
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
-
-    return Inertia::render('Job', ['job' => $job]);
-});
 
 Route::get('/contact', function () {
     return Inertia::render('contact');
