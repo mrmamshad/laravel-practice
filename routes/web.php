@@ -21,7 +21,11 @@ Route::get('/jobs/create',[JobController::class, 'create'])->name('jobs.create')
 Route::post('/jobs/create', [JobController::class, 'store'])->name('jobs.store');
 Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
 Route::patch('/jobs/{id}',[JobController::class, 'update'])->name('jobs.update');
-Route::get('/jobs/{id}/edit',  [JobController::class, 'edit'])->name('jobs.edit');
+Route::get('/jobs/{id}/edit',  [JobController::class, 'edit'])
+->name('jobs.edit')
+->middleware('check.job.authorization')
+;
+
 Route::delete('/jobs/{id}/', [JobController::class, 'destroy'])->name('jobs.destroy');
 
 // Route::resource('jobs', JobController::class);

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 use App\Models\Job;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Inertia\Inertia;
+
 
 class JobController extends Controller
 {
@@ -66,11 +69,13 @@ class JobController extends Controller
    */
   public function edit(string $id)
   {
-    $job = Job::find($id);
-    return Inertia::render('Jobs/Edit', [
-      'job' => $job,
-    ]);
+      $job = Job::findOrFail($id);
+
+      return Inertia::render('Jobs/Edit', [
+          'job' => $job,
+      ]);
   }
+
 
   /**
    * Update the specified resource in storage.

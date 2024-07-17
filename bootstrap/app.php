@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,7 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
 
-        //
+        // Register route middleware
+       $middleware->alias([
+           'check.job.authorization' => \App\Http\Middleware\CheckJobAuthorization::class,
+       ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
